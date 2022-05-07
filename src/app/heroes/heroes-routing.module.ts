@@ -5,10 +5,12 @@ import { AddComponent } from './pages/add/add.component';
 import { ListComponent } from './pages/list/list.component';
 import { SearchComponent } from './pages/search/search.component';
 import { GetComponent } from './pages/get/get.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path:'',
+    component: HomeComponent,
     children:[
       {
         path:'list',
