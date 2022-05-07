@@ -1,9 +1,11 @@
-import { NgModule, Component } from '@angular/core';
+//Angular Modules
+import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//My Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-const childRoutes: Routes = [
+const routes: Routes = [
   {
     path: '', //vacío porque lo voy a indicar en el app-routing con el Lazy Load
     children:[
@@ -26,7 +28,7 @@ const childRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(childRoutes)
+    RouterModule.forChild(routes)
   ],
   exports:[
     RouterModule

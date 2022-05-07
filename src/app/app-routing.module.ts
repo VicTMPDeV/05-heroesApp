@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule) //Lazy Loading
   },
   {
+    path:'heroes',
+    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule) //Lazy Loading
+  },
+  {
     path: '404',
     component: ErrorPageComponent
   },
