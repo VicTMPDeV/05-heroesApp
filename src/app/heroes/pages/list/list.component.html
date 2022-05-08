@@ -1,6 +1,7 @@
 <p>list works!</p>
 <ul>
-    <li>
-        <a routerLink="/">VOLVER A INICIO</a>
+    <li *ngFor="let hero of heroesList">
+        {{hero.superhero}}
     </li>
 </ul>
+<a routerLink="/">VOLVER A INICIO</a>
