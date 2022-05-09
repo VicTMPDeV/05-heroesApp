@@ -1,7 +1,19 @@
-<p>list works!</p>
-<ul>
+<div>
+    <h1>Listado de Héroes</h1>
+    <mat-divider></mat-divider>
+</div>
+<div style="margin-top: 25px;">
+    <mat-card *ngFor="let hero of heroesList">
+        <mat-card-header>
+            <mat-card-title>{{hero.superhero}}</mat-card-title>
+            <mat-card-subtitle>{{hero.alter_ego}}</mat-card-subtitle>
+        </mat-card-header>
+        <img src="">
+    </mat-card>
+</div>
+<!-- <ul>
     <li *ngFor="let hero of heroesList">
         {{hero.superhero}}
     </li>
 </ul>
-<a routerLink="/">VOLVER A INICIO</a>
+<a routerLink="/">VOLVER A INICIO</a> -->
