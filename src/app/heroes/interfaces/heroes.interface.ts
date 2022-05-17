@@ -1,4 +1,4 @@
-export interface Heroe {
+export interface Hero {
     id?:              string; //Cuando lo traigo del servicio viene, pero al crear uno nuevo, de momento no lo tenemos
     superhero:        string;
     publisher:        Publisher;
