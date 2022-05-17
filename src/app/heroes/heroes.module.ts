@@ -7,13 +7,12 @@ import { HeroesRoutingModule } from './heroes-routing.module';
 import { MaterialModule } from '../material/material.module';
 //My Components
 import { HomeComponent } from './pages/home/home.component'; //Padre de los sucesivos
-import { AddComponent } from './pages/add/add.component';
-import { GetComponent } from './pages/get/get.component';
-import { ListComponent } from './pages/list/list.component';
-import { SearchComponent } from './pages/search/search.component';
-
-
-
+import { AddComponent } from './pages/addHero/addHero.component';
+import { GetComponent } from './pages/getHero/getHero.component';
+import { ListComponent } from './pages/listHero/listHero.component';
+import { SearchComponent } from './pages/searchHero/searchHero.component';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,9 @@ import { SearchComponent } from './pages/search/search.component';
     AddComponent,
     GetComponent,
     ListComponent,
-    SearchComponent
+    SearchComponent,
+    HeroCardComponent,
+    ImagePipe
   ],
   imports: [
     CommonModule,

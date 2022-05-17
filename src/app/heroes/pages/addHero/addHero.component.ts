@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
+  selector: 'app-add',
+  templateUrl: './addHero.component.html',
   styles: [
   ]
 })
-export class SearchComponent implements OnInit {
+export class AddComponent implements OnInit {
 
   constructor() { }
 
