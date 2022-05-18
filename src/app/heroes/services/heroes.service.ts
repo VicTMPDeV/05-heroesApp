@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from '../interfaces/heroes.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   //TODO -> Preguntar a Efi
@@ -9,13 +10,19 @@ import { Hero } from '../interfaces/heroes.interface';
 })
 export class HeroesService {
 
-  constructor(private http: HttpClient) { }
+  private baseUrl: string = environment.baseUrl;
+
+  constructor(private http: HttpClient) {}
 
   public getHeroes(): Observable<Hero[]>{
-    return this.http.get<Hero[]>('http://localhost:3000/heroes')
+
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
+
   }
 
   public getHeroById(id: string): Observable<Hero> {
-    return this.http.get<Hero>(`http://localhost:3000/heroe/${id}`);
+
+    return this.http.get<Hero>(`${this.baseUrl}/heroes/${id}`);
+
   }
 }
