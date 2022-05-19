@@ -25,4 +25,10 @@ export class HeroesService {
     return this.http.get<Hero>(`${this.baseUrl}/heroes/${id}`);
 
   }
+
+  public getSuggested(term: string, elem: number): Observable<Hero[]>{
+
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${term}&_limit=${elem}`);
+
+  }
 }
