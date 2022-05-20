@@ -16,18 +16,24 @@ export class SearchComponent implements OnInit {
 
   public searchValue: string = '';
   public heroesList: Hero[] = [];
-  public selectedHero!: Hero;
+  public selectedHero!: Hero | undefined;
   
   constructor( private heroesService: HeroesService ) { }
 
   ngOnInit(): void {}
 
   search(){
-    this.heroesService.getSuggested(this.searchValue, 5)
+    this.heroesService.getSuggested(this.searchValue.trim(), 5)
       .subscribe( ( heroesResponse ) => { this.heroesList = heroesResponse } );
   }
 
   selectedOption(event: MatAutocompleteSelectedEvent){
+
+    if(!event.option.value){
+      this.selectedHero = undefined;
+      return;
+    }
+
     const hero: Hero = event.option.value;
     this.searchValue = hero.superhero;
     this.heroesService.getHeroById(hero.id!) //si no pongo ! me indica un error porque pudiera ser que viniera null del evento
