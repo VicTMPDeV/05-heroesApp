@@ -48,7 +48,7 @@ export class AddComponent implements OnInit {
     if(!this.router.url.includes('edit')){
       return;
     }
-    
+
     this.activatedRoute.params
       .pipe( //Captura el id de la Url en la que estoy al iniciar el componente addHero
         switchMap( ({id}) => this.heroesService.getHeroById(id) )
@@ -57,7 +57,7 @@ export class AddComponent implements OnInit {
 
   }
 
-  save(){
+  public save(){
 
     //Validación -> Si no le pongo nombre que es obligatorio, no guarda
     if( this.hero.superhero.trim().length === 0){
@@ -82,6 +82,13 @@ export class AddComponent implements OnInit {
 
     }
 
+  }
+
+  public delete(){
+    this.heroesService.deleteHero( this.hero.id! )
+      .subscribe( (resp) => {
+        this.router.navigate(['/heroes/list']);
+      });
   }
 
 }

@@ -62,12 +62,26 @@
                    required>
         </mat-form-field>
 
-        <button mat-raised-button
-                color="warn"
+        
+
+        <div fxLayout>
+            <button mat-raised-button
+                color="primary"
                 (click)="save()">
             <mat-icon>save</mat-icon>
             {{(hero.id)?'Actualizar':'Crear'}}
-        </button>
+            </button>
+
+            <span class="spacer"></span>
+
+            <button mat-raised-button
+                    color="warn"
+                    *ngIf="hero.id"
+                    (click)="delete()">
+                <mat-icon>delete</mat-icon>
+                Borrar
+            </button>
+        </div>
 
     </div>
 
