@@ -12,23 +12,38 @@ export class HeroesService {
 
   private baseUrl: string = environment.baseUrl;
 
+
   constructor(private http: HttpClient) {}
 
+  //READ
   public getHeroes(): Observable<Hero[]>{
 
     return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
 
   }
 
-  public getHeroById(id: string): Observable<Hero> {
+  //READ
+  public getHeroById( idHeroRequest: string ): Observable<Hero> {
 
-    return this.http.get<Hero>(`${this.baseUrl}/heroes/${id}`);
+    return this.http.get<Hero>(`${this.baseUrl}/heroes/${idHeroRequest}`);
+
+  }
+
+  //READ
+  public getSuggested( valueRequest: string, elem: number ): Observable<Hero[]>{
+
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${valueRequest}&_limit=${elem}`);
 
   }
 
-  public getSuggested(term: string, elem: number): Observable<Hero[]>{
-
-    return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${term}&_limit=${elem}`);
-
+  //CREATE 
+  public postHero ( heroRequest: Hero ): Observable<Hero>{
+    return this.http.post<Hero>(`${this.baseUrl}/heroes`, heroRequest);
   }
+
+  //UPDATE
+  public putHero ( heroRequest: Hero): Observable<Hero>{
+    return this.http.put<Hero>(`${this.baseUrl}/heroes/${heroRequest.id}`, heroRequest);
+  }
+  
 }
