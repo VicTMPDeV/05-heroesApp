@@ -45,6 +45,10 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(!this.router.url.includes('edit')){
+      return;
+    }
+    
     this.activatedRoute.params
       .pipe( //Captura el id de la Url en la que estoy al iniciar el componente addHero
         switchMap( ({id}) => this.heroesService.getHeroById(id) )
