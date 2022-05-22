@@ -22,8 +22,7 @@
                 <mat-label>Alter Ego</mat-label>
                 <input matInput 
                        type="text"
-                       [(ngModel)]="hero.alter_ego" 
-                       required>
+                       [(ngModel)]="hero.alter_ego">
             </mat-form-field>
         </div>
 
@@ -31,22 +30,19 @@
             <mat-label>Primera Aparición</mat-label>
             <input matInput 
                    type="text"
-                   [(ngModel)]="hero.first_appearance" 
-                   required>
+                   [(ngModel)]="hero.first_appearance">
         </mat-form-field>
        
         <mat-form-field>
             <mat-label>Personajes</mat-label>
             <input matInput 
                    type="text"
-                   [(ngModel)]="hero.characters" 
-                   required>
+                   [(ngModel)]="hero.characters">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select [(ngModel)]="hero.publisher"
-                        required>
+            <mat-select [(ngModel)]="hero.publisher">
                 <mat-option *ngFor="let publisher of publishers"
                             [value]="publisher.id">
                     {{publisher.desc}}
@@ -60,9 +56,7 @@
                    type="url" 
                    [(ngModel)]="hero.alt_img" 
                    required>
-        </mat-form-field>
-
-        
+        </mat-form-field>      
 
         <div fxLayout>
             <button mat-raised-button

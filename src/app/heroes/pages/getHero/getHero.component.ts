@@ -18,20 +18,20 @@ export class GetComponent implements OnInit {
 
   public hero!:Hero;
 
-  constructor(private activatedRoute : ActivatedRoute,
-              private heroesService: HeroesService,
-              private router: Router) { }
+  constructor(private _activatedRoute : ActivatedRoute,
+              private _heroesService: HeroesService,
+              private _router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params
+    this._activatedRoute.params
       .pipe(
-        switchMap(({id})=> this.heroesService.getHeroById(id))
+        switchMap(({id})=> this._heroesService.getHeroById(id))
       )
       .subscribe( (hero) => this.hero = hero);
   }
 
   goBack(){
-    this.router.navigate(['/heroes/list']);
+    this._router.navigate(['/heroes/list']);
   }
 
 }

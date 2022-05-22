@@ -11,10 +11,10 @@ export class ListComponent implements OnInit {
 
   public heroesList: Hero[] = [];
 
-  constructor(private heroesService: HeroesService) { }
+  constructor(private _heroesService: HeroesService) { }
 
   ngOnInit(): void {
-    this.heroesService.getHeroes()
+    this._heroesService.getHeroes()
       .subscribe( heroesServiceResponse => this.heroesList = heroesServiceResponse );
   }
 

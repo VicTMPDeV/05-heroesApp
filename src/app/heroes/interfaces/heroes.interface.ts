@@ -1,5 +1,6 @@
 export interface Hero {
     id?:              string; //Cuando lo traigo del servicio viene, pero al crear uno nuevo, de momento no lo tenemos
+    default:          boolean;
     superhero:        string;
     publisher:        Publisher;
     alter_ego:        string;

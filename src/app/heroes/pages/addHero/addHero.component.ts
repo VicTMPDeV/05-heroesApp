@@ -22,6 +22,7 @@ export class AddComponent implements OnInit {
 
   public hero: Hero = {
     superhero:'',
+    default: false,
     alter_ego:'',
     characters:'',
     first_appearance:'',
@@ -40,20 +41,20 @@ export class AddComponent implements OnInit {
     }
   ]
 
-  constructor(private heroesService: HeroesService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private snackBar: MatSnackBar) {}
+  constructor(private _heroesService: HeroesService,
+              private _activatedRoute: ActivatedRoute,
+              private _router: Router,
+              private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
 
-    if(!this.router.url.includes('edit')){
+    if(!this._router.url.includes('edit')){
       return;
     }
 
-    this.activatedRoute.params
+    this._activatedRoute.params
       .pipe( //Captura el id de la Url en la que estoy al iniciar el componente addHero
-        switchMap( ({id}) => this.heroesService.getHeroById(id) )
+        switchMap( ({id}) => this._heroesService.getHeroById(id) )
       )
       .subscribe( heroResponse => this.hero = heroResponse );
 
@@ -67,21 +68,21 @@ export class AddComponent implements OnInit {
     }
 
     if( this.hero.id ){ //ACTUALIZAR
-      
-      this.heroesService.putHero( this.hero )
+
+      this._heroesService.putHero( this.hero )
         .subscribe( (heroResponse) => {
           this.showSnackBar('Héroe Actualizado');
           console.log('Response:', 'Actualizando Héroe', heroResponse);
-          this.router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
+          this._router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
         });
 
     }else{ //CREAR
       
-      this.heroesService.postHero(this.hero)
+      this._heroesService.postHero(this.hero)
       .subscribe( (heroResponse) => {
         this.showSnackBar('Héroe Creado');
         console.log('Response:', 'Creando Héroe', heroResponse);
-        this.router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
+        this._router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
       });
 
     }
@@ -90,14 +91,14 @@ export class AddComponent implements OnInit {
 
   //BORRAR 
   public delete(){
-    this.heroesService.deleteHero( this.hero.id! )
+    this._heroesService.deleteHero( this.hero.id! )
       .subscribe( (resp) => {
-        this.router.navigate(['/heroes/list']);
+        this._router.navigate(['/heroes/list']);
       });
   }
 
   showSnackBar( message: string ){
-    this.snackBar.open( message, 'Ok!', {
+    this._snackBar.open( message, 'Ok!', {
       duration: 2500
     });
   }

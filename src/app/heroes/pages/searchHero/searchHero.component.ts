@@ -9,8 +9,7 @@ import { HeroesService } from '../../services/heroes.service';
 @Component({
   selector: 'app-search',
   templateUrl: './searchHero.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class SearchComponent implements OnInit {
 
@@ -18,12 +17,12 @@ export class SearchComponent implements OnInit {
   public heroesList: Hero[] = [];
   public selectedHero!: Hero | undefined;
   
-  constructor( private heroesService: HeroesService ) { }
+  constructor( private _heroesService: HeroesService ) { }
 
   ngOnInit(): void {}
 
   search(){
-    this.heroesService.getSuggested(this.searchValue.trim(), 5)
+    this._heroesService.getSuggested(this.searchValue.trim(), 5)
       .subscribe( ( heroesResponse ) => { this.heroesList = heroesResponse } );
   }
 
@@ -36,7 +35,7 @@ export class SearchComponent implements OnInit {
 
     const hero: Hero = event.option.value;
     this.searchValue = hero.superhero;
-    this.heroesService.getHeroById(hero.id!) //si no pongo ! me indica un error porque pudiera ser que viniera null del evento
+    this._heroesService.getHeroById(hero.id!) //si no pongo ! me indica un error porque pudiera ser que viniera null del evento
       .subscribe((hero) => {this.selectedHero = hero});
   }
 

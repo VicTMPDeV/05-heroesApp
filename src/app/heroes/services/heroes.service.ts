@@ -10,45 +10,38 @@ import { environment } from '../../../environments/environment';
 })
 export class HeroesService {
 
-  private baseUrl: string = environment.baseUrl;
-
+  private _baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
   //READ
   public getHeroes(): Observable<Hero[]>{
-
-    return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
-
+    return this.http.get<Hero[]>(`${this._baseUrl}/heroes`);
   }
 
   //READ
   public getHeroById( idHeroRequest: string ): Observable<Hero> {
-
-    return this.http.get<Hero>(`${this.baseUrl}/heroes/${idHeroRequest}`);
-
+    return this.http.get<Hero>(`${this._baseUrl}/heroes/${idHeroRequest}`);
   }
 
   //READ
   public getSuggested( valueRequest: string, elem: number ): Observable<Hero[]>{
-
-    return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${valueRequest}&_limit=${elem}`);
-
+    return this.http.get<Hero[]>(`${this._baseUrl}/heroes?q=${valueRequest}&_limit=${elem}`);
   }
 
   //CREATE 
   public postHero ( heroRequest: Hero ): Observable<Hero>{
-    return this.http.post<Hero>(`${this.baseUrl}/heroes`, heroRequest);
+    return this.http.post<Hero>(`${this._baseUrl}/heroes`, heroRequest);
   }
 
   //UPDATE
   public putHero ( heroRequest: Hero): Observable<Hero>{
-    return this.http.put<Hero>(`${this.baseUrl}/heroes/${heroRequest.id}`, heroRequest);
+    return this.http.put<Hero>(`${this._baseUrl}/heroes/${heroRequest.id}`, heroRequest);
   }
 
   //DELETE
   public deleteHero ( id: string ): Observable<Hero>{
-    return this.http.delete<Hero>(`${this.baseUrl}/heroes/${id}`);
+    return this.http.delete<Hero>(`${this._baseUrl}/heroes/${id}`);
   }
   
 }
