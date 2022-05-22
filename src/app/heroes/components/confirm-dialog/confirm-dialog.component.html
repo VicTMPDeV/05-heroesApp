@@ -1,0 +1,11 @@
+<div fxLayout="column">
+    <h3 style="text-align: center;">Borrar el Héroe: {{data.superhero}}.</h3>
+    <h3 style="text-align: center;">¿Desea continuar?</h3>    
+    <mat-divider></mat-divider>
+    <div class="action-buttons" fxLayout="row">
+        <button mat-raised-button (click)="delete()" color="warn">Sí</button>
+        <span class="spacer"></span>
+        <button mat-raised-button (click)="close()">No</button>
+    </div>
+</div>
+

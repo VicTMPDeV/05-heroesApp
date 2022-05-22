@@ -9,7 +9,7 @@ export class ImagePipe implements PipeTransform {
 
   transform(hero: Hero ): string {
 
-    console.log('Pipe imagen se ejecuta'); //flag para ver en consola cómo funcionan los pipes puros y los impuros
+    // console.log('Pipe imagen se ejecuta'); //flag para ver en consola cómo funcionan los pipes puros y los impuros
     
     if( !hero.default && !hero.alt_img ){ //Al crearlo no tiene ninguna de las dos
       return 'assets/no-image.png';
@@ -18,7 +18,6 @@ export class ImagePipe implements PipeTransform {
     }else{ //Los que vienen por defecto con la imagen asociada al id
       return `assets/heroes/${hero.id}.jpg`;
     }
-
 
   }
 
