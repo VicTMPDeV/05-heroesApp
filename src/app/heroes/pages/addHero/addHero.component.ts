@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { switchMap } from 'rxjs/operators';
 import { Hero, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add',
@@ -41,7 +42,8 @@ export class AddComponent implements OnInit {
 
   constructor(private heroesService: HeroesService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {}
+              private router: Router,
+              private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
 
@@ -68,27 +70,36 @@ export class AddComponent implements OnInit {
       
       this.heroesService.putHero( this.hero )
         .subscribe( (heroResponse) => {
-          this.router.navigate(['/heroes/list']);
+          this.showSnackBar('Héroe Actualizado');
           console.log('Response:', 'Actualizando Héroe', heroResponse);
+          this.router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
         });
 
     }else{ //CREAR
       
       this.heroesService.postHero(this.hero)
       .subscribe( (heroResponse) => {
-        this.router.navigate(['/heroes/list']);
+        this.showSnackBar('Héroe Creado');
         console.log('Response:', 'Creando Héroe', heroResponse);
+        this.router.navigate(['/heroes/list']); //redireccionando a la lista una vez producido el cambio, evitamos trabajar con pipes impuros
       });
 
     }
 
   }
 
+  //BORRAR 
   public delete(){
     this.heroesService.deleteHero( this.hero.id! )
       .subscribe( (resp) => {
         this.router.navigate(['/heroes/list']);
       });
+  }
+
+  showSnackBar( message: string ){
+    this.snackBar.open( message, 'Ok!', {
+      duration: 2500
+    });
   }
 
 }
