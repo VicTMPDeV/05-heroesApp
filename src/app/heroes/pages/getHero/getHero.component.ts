@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Hero } from '../../interfaces/heroes.interface';
 import { switchMap } from "rxjs/operators";
 import { HeroesService } from '../../services/heroes.service';
@@ -25,9 +25,10 @@ export class GetComponent implements OnInit {
   ngOnInit(): void {
     this._activatedRoute.params
       .pipe(
-        switchMap(({id})=> this._heroesService.getHeroById(id))
+        switchMap(({id}) => this._heroesService.getHeroById(id))
+        // switchMap((param: Params) => this._heroesService.getHeroById(param['id'])) //SIN DESESTRUCTURACIÓN
       )
-      .subscribe( (hero) => this.hero = hero);
+      .subscribe( (hero: Hero) => this.hero = hero);
   }
 
   goBack(){

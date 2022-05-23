@@ -47,7 +47,9 @@
             <mat-icon>menu</mat-icon>
         </button>
         <span class="spacer"></span>
-        <button mat-flat-button>
+        <span class="spacer"><b>Usuario:</b> {{getUser.usuario}} </span>
+        <button mat-flat-button
+                (click)="logOut()">
             Logout
         </button>
 

@@ -97,7 +97,7 @@ export class AddComponent implements OnInit {
 
     const dialog = this._dialog.open(ConfirmDialogComponent, {
       width: '300px',
-      data: {...this.hero} 
+      data: {...this.hero} //nos aseguramos de la inmutabilidad de primer nivel del objeto creando una copia para romper la referencia con el original
     });
 
     dialog.afterClosed()

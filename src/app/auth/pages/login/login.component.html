@@ -1,6 +1,20 @@
-<p>login works!</p>
-<ul>
+<mat-grid-list cols="1">
+    <mat-grid-tile>
+        <button mat-raised-button 
+                color="primary"
+                (click)="login()">
+            Login
+        </button>
+        <!-- FUNCIONALIDAD PARA PROBAR EL CAN ACTIVATE DEL GUARD -->
+        <!-- <button mat-raised-button 
+                color="primary"
+                (click)="loginFalse()">
+            Login Falso
+        </button> -->
+    </mat-grid-tile>
+</mat-grid-list>
+<!-- <ul>
     <li>
         <a routerLink="/">VOLVER A INICIO</a>
     </li>
-</ul>
+</ul> -->
